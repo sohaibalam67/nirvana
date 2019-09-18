@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import colors from '../../../values/colors';
+import {StyleSheet, View} from 'react-native';
 import MiniBottomPlayer from '../../../components/MiniBottomPlayer';
-import {Platform, StyleSheet, Text, View, StatusBar} from 'react-native';
 
 export default class PlaylistScreen extends Component {
   render() {
@@ -10,15 +10,7 @@ export default class PlaylistScreen extends Component {
     ) : (
       <View />
     );
-    return (
-      <View style={styles.container}>
-        <StatusBar
-          backgroundColor={colors.JET_BLACK}
-          barStyle="light-content"
-        />
-        {showMiniPlayer}
-      </View>
-    );
+    return <View style={styles.container}>{showMiniPlayer}</View>;
   }
 }
 

@@ -6,11 +6,12 @@ import {
   TouchableHighlight,
   Dimensions,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
-import colors from '../values/colors';
 import fonts from '../values/fonts';
 import {connect} from 'react-redux';
+import colors from '../values/colors';
+import Icon from 'react-native-vector-icons/Feather';
 import {storeIsSongPlaying} from '../store/actions/isSongPlaying';
+
 const {width, height} = Dimensions.get('screen');
 
 class MiniBottomPlayer extends Component {

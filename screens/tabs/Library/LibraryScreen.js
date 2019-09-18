@@ -1,17 +1,10 @@
-import React, {Component} from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
-  FlatList,
-} from 'react-native';
 import {connect} from 'react-redux';
+import React, {Component} from 'react';
 import Sound from 'react-native-sound';
 import colors from '../../../values/colors';
 import Permissions from 'react-native-permissions';
 import MusicFiles from 'react-native-get-music-files';
+import {StyleSheet, View, FlatList} from 'react-native';
 import SongListItem from '../../../components/SongListItem';
 import AsyncStorage from '@react-native-community/async-storage';
 import MiniBottomPlayer from '../../../components/MiniBottomPlayer';
@@ -102,10 +95,6 @@ class LibraryScreen extends Component {
     );
     return (
       <View style={styles.container}>
-        <StatusBar
-          backgroundColor={colors.JET_BLACK}
-          barStyle="light-content"
-        />
         <FlatList
           data={this.state.dataSource}
           keyExtractor={(item, index) => index.toString()}

@@ -5,16 +5,17 @@ import {
   View,
   Dimensions,
   Image,
-  Slider,
   TouchableHighlight,
 } from 'react-native';
 import {connect} from 'react-redux';
 import fonts from '../../values/fonts';
 import colors from '../../values/colors';
 const {width} = Dimensions.get('screen');
+import Slider from '@react-native-community/slider';
 import Icon from 'react-native-vector-icons/Feather';
 import CustomHeader from '../../components/CustomHeader';
 import {storeIsSongPlaying} from '../../store/actions/isSongPlaying';
+import SongOptionsModal from '../../components/SongOptionsModal';
 
 let placeholder = require('../../assets/images/placeholder.png');
 
@@ -24,6 +25,7 @@ class Player extends Component {
     this.state = {
       SliderValue: 0,
       paused: false,
+      songOptionsModalVisible: false,
     };
   }
 
@@ -63,6 +65,10 @@ class Player extends Component {
     this.props.storeIsSongPlaying(!this.props.is_song_playing);
   };
 
+  toggleSongOptionsModal = value => {
+    this.setState({songOptionsModalVisible: value});
+  };
+
   setTime = event => {};
   onEnd = event => {};
 
@@ -80,7 +86,10 @@ class Player extends Component {
 
     return (
       <View style={styles.container}>
-        <CustomHeader navigation={this.props.navigation} />
+        <CustomHeader
+          navigation={this.props.navigation}
+          toggleSongOptionsModal={this.toggleSongOptionsModal}
+        />
         <View style={styles.playerContent}>
           <View style={styles.albumArtPlaceholder}>
             <Image
@@ -144,6 +153,10 @@ class Player extends Component {
             </TouchableHighlight>
           </View>
         </View>
+        <SongOptionsModal
+          songOptionsModalVisible={this.state.songOptionsModalVisible}
+          toggleSongOptionsModal={this.toggleSongOptionsModal}
+        />
       </View>
     );
   }

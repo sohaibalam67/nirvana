@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import {StatusBar} from 'react-native';
 import colors from './values/colors';
 import RootScreen from './screens/RootScreen';
-import SetupCover from './components/SetupCover';
 import configureStore from './store/configureStore';
 const store = configureStore();
 

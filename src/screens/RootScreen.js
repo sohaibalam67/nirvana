@@ -7,13 +7,13 @@ const AppStackNavigator = createStackNavigator({
   Tabs: {
     screen: Tabs,
     navigationOptions: {
-      header: null,
+      headerShown: false,
     },
   },
   Player: {
     screen: Player,
     navigationOptions: {
-      header: null,
+      headerShown: false,
     },
   },
 });

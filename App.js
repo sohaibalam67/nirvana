@@ -1,9 +1,9 @@
 import {Provider} from 'react-redux';
 import React, {Component} from 'react';
 import {StatusBar} from 'react-native';
-import colors from './values/colors';
-import RootScreen from './screens/RootScreen';
-import configureStore from './store/configureStore';
+import colors from './src/values/colors';
+import RootScreen from './src/screens/RootScreen';
+import configureStore from './src/store/configureStore';
 const store = configureStore();
 
 export default class App extends Component {

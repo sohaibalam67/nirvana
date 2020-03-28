@@ -28,6 +28,8 @@ class Player extends Component {
       paused: false,
       songOptionsModalVisible: false,
     };
+
+    this.sliderChanging = false;
   }
 
   componentDidMount() {
@@ -38,11 +40,12 @@ class Player extends Component {
       });
     });
     const t = this;
-    this.timeout = setInterval(() => {
+    this.interval = setInterval(() => {
       if (
         global.sound &&
         global.sound.isLoaded() &&
-        this.props.is_song_playing
+        this.props.is_song_playing &&
+        !this.sliderChanging
       ) {
         global.sound.getCurrentTime((seconds, isPlaying) => {
           val = parseInt(seconds * 1000);
@@ -55,7 +58,7 @@ class Player extends Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.timeout);
+    clearInterval(this.interval);
   }
   changePlayingState = event => {
     if (this.props.is_song_playing) {
@@ -70,8 +73,18 @@ class Player extends Component {
     this.setState({songOptionsModalVisible: value});
   };
 
-  setTime = event => {};
-  onEnd = event => {};
+  onSlidingStart = value => {
+    this.sliderChanging = true;
+  };
+  onSlidingComplete = value => {
+    this.sliderChanging = false;
+  };
+  onSliderValueChange = value => {
+    if (global.sound) {
+      global.sound.setCurrentTime(value / 1000);
+      this.setState({SliderValue: value});
+    }
+  };
 
   render() {
     let playButton = this.props.is_song_playing ? (
@@ -120,13 +133,16 @@ class Player extends Component {
             </View>
           </View>
           <Slider
-            step={100}
+            step={10}
             minimumValue={0}
             maximumValue={parseInt(this.props.current_song.duration)}
             minimumTrackTintColor={colors.RED}
             maximumTrackTintColor="rgba(255,255,255,0.5)"
             value={this.state.SliderValue}
             thumbTintColor={colors.RED}
+            onValueChange={this.onSliderValueChange}
+            onSlidingStart={this.onSlidingStart}
+            onSlidingComplete={this.onSlidingComplete}
             style={{width: '100%'}}
           />
           <View style={styles.duration}>

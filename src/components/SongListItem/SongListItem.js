@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -7,12 +7,12 @@ import {
   Image,
   TouchableHighlight,
 } from 'react-native';
-const {width, height} = Dimensions.get('screen');
+const width = Dimensions.get('screen').width;
 import {getSongName} from '../../helpers/utils';
 import colors from '../../values/colors';
 import fonts from '../../values/fonts';
 let placeholder = require('../../assets/images/placeholder.png');
-export default class SongListItem extends Component {
+export default class SongListItem extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {};

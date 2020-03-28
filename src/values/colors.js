@@ -4,6 +4,7 @@ const colors = {
   GREY: '#A5B1C2',
   RED: '#FF3030',
   STONE: '#262630',
+  STONE_LIGHT: '#2D2D39',
   BLACK: '#1C1C26',
   ASPHALT: '#34495E',
   JET_BLACK: '#000000',

@@ -30,46 +30,46 @@ class MiniBottomPlayer extends Component {
       <Icon name="play" size={25} color={colors.WHITE} />
     );
     return (
-      <View style={styles.playerContainer}>
-        <TouchableHighlight
-          onPress={() => {
-            this.props.navigation.navigate('Player');
-          }}>
-          <View style={styles.innerContainer}>
-            <View style={styles.songInfo}>
-              <Text
-                style={styles.songName}
-                ellipsizeMode="tail"
-                numberOfLines={1}>
-                {this.props.current_song.title
-                  ? this.props.current_song.title
-                  : getSongName(this.props.current_song.fileName)}
-              </Text>
-              <Text
-                style={styles.artistName}
-                ellipsizeMode="tail"
-                numberOfLines={1}>
-                {this.props.current_song.author
-                  ? this.props.current_song.author
-                  : 'Unknown Artist'}
-              </Text>
-            </View>
-            <View style={styles.buttonSet}>
-              {/* <View style={styles.button}>
+      <TouchableHighlight
+        style={styles.playerContainer}
+        underlayColor={colors.STONE_LIGHT}
+        onPress={() => {
+          this.props.navigation.navigate('Player');
+        }}>
+        <View style={styles.innerContainer}>
+          <View style={styles.songInfo}>
+            <Text
+              style={styles.songName}
+              ellipsizeMode="tail"
+              numberOfLines={1}>
+              {this.props.current_song.title
+                ? this.props.current_song.title
+                : getSongName(this.props.current_song.fileName)}
+            </Text>
+            <Text
+              style={styles.artistName}
+              ellipsizeMode="tail"
+              numberOfLines={1}>
+              {this.props.current_song.author
+                ? this.props.current_song.author
+                : 'Unknown Artist'}
+            </Text>
+          </View>
+          <View style={styles.buttonSet}>
+            {/* <View style={styles.button}>
               <Icon name="skip-back" size={20} color={colors.WHITE} />
             </View> */}
-              <TouchableHighlight
-                onPress={this.changePlayingState.bind(this)}
-                underlayColor={colors.BLACK}>
-                <View style={styles.button}>{playButton}</View>
-              </TouchableHighlight>
-              {/* <View style={styles.button}>
+            <TouchableHighlight
+              onPress={this.changePlayingState.bind(this)}
+              underlayColor={colors.BLACK}>
+              <View style={styles.button}>{playButton}</View>
+            </TouchableHighlight>
+            {/* <View style={styles.button}>
               <Icon name="skip-forward" size={20} color={colors.WHITE} />
             </View> */}
-            </View>
           </View>
-        </TouchableHighlight>
-      </View>
+        </View>
+      </TouchableHighlight>
     );
   }
 }
@@ -77,7 +77,6 @@ class MiniBottomPlayer extends Component {
 const styles = StyleSheet.create({
   playerContainer: {
     flex: 1,
-    backgroundColor: colors.WHITE,
     width: width,
     minHeight: 60,
     maxHeight: 60,

@@ -1,11 +1,5 @@
-import React, {Component} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableHighlight,
-  StatusBar,
-} from 'react-native';
+import React from 'react';
+import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import colors from '../../values/colors';
 import fonts from '../../values/fonts';
@@ -13,7 +7,6 @@ import fonts from '../../values/fonts';
 const CustomHeader = props => {
   return (
     <View style={styles.playerHeader}>
-      <StatusBar backgroundColor={colors.JET_BLACK} barStyle="light-content" />
       <TouchableHighlight
         style={styles.backButton}
         underlayColor={'rgba(0,0,0,0.1)'}

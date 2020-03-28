@@ -10,15 +10,7 @@ export default class FavouritesScreen extends Component {
     ) : (
       <View />
     );
-    return (
-      <View style={styles.container}>
-        <StatusBar
-          backgroundColor={colors.JET_BLACK}
-          barStyle="light-content"
-        />
-        {showMiniPlayer}
-      </View>
-    );
+    return <View style={styles.container}>{showMiniPlayer}</View>;
   }
 }
 

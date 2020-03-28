@@ -13,9 +13,9 @@ import colors from '../../values/colors';
 const {width} = Dimensions.get('screen');
 import Slider from '@react-native-community/slider';
 import Icon from 'react-native-vector-icons/Feather';
-import CustomHeader from '../../components/CustomHeader';
+import {CustomHeader} from '../../components/CustomHeader';
 import {storeIsSongPlaying} from '../../store/actions/isSongPlaying';
-import SongOptionsModal from '../../components/SongOptionsModal';
+import {SongOptionsModal} from '../../components/SongOptionsModal';
 
 let placeholder = require('../../assets/images/placeholder.png');
 
@@ -254,7 +254,4 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   storeIsSongPlaying: value => dispatch(storeIsSongPlaying(value)),
 });
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Player);
+export default connect(mapStateToProps, mapDispatchToProps)(Player);

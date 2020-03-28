@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Dimensions, Animated} from 'react-native';
-import colors from '../values/colors';
-import fonts from '../values/fonts';
+import colors from '../../values/colors';
+import fonts from '../../values/fonts';
 import Icon from 'react-native-vector-icons/Feather';
 import Pulse from './Pulse';
 const {width, height} = Dimensions.get('window');
@@ -15,13 +15,7 @@ export default class SetupCover extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Pulse
-          color={colors.RED}
-          numPulses={3}
-          diameter={300}
-          speed={15}
-          duration={1000}
-        />
+        <Pulse color={colors.GREY} numPulses={3} />
         <View style={styles.textContainer}>
           <Text style={styles.title}>PLEASE WAIT WHILE WE SETUP THE APP</Text>
           <Text style={styles.subtitle}>

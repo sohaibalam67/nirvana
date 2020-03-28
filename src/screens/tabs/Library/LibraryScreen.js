@@ -5,9 +5,9 @@ import colors from '../../../values/colors';
 import Permissions from 'react-native-permissions';
 import MusicFiles from 'react-native-get-music-files';
 import {StyleSheet, View, FlatList} from 'react-native';
-import SongListItem from '../../../components/SongListItem';
+import {SongListItem} from '../../../components/SongListItem';
 import AsyncStorage from '@react-native-community/async-storage';
-import MiniBottomPlayer from '../../../components/MiniBottomPlayer';
+import {MiniBottomPlayer} from '../../../components/MiniBottomPlayer';
 import {storeCurrentSong} from '../../../store/actions/currentSong';
 import {storeIsSongPlaying} from '../../../store/actions/isSongPlaying';
 
@@ -129,7 +129,4 @@ const mapDispatchToProps = dispatch => ({
   storeCurrentSong: song => dispatch(storeCurrentSong(song)),
   storeIsSongPlaying: value => dispatch(storeIsSongPlaying(value)),
 });
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(LibraryScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(LibraryScreen);

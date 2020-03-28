@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import colors from '../../../values/colors';
 import {StyleSheet, View} from 'react-native';
-import MiniBottomPlayer from '../../../components/MiniBottomPlayer';
+import {MiniBottomPlayer} from '../../../components/MiniBottomPlayer';
 
 export default class FavouritesScreen extends Component {
   render() {

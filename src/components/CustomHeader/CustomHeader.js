@@ -7,8 +7,8 @@ import {
   StatusBar,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import colors from '../values/colors';
-import fonts from '../values/fonts';
+import colors from '../../values/colors';
+import fonts from '../../values/fonts';
 
 const CustomHeader = props => {
   return (

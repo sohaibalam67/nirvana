@@ -6,11 +6,10 @@ import {
   TouchableHighlight,
   Dimensions,
 } from 'react-native';
-import fonts from '../values/fonts';
 import {connect} from 'react-redux';
-import colors from '../values/colors';
+import colors from '../../values/colors';
 import Icon from 'react-native-vector-icons/Feather';
-import {storeIsSongPlaying} from '../store/actions/isSongPlaying';
+import {storeIsSongPlaying} from '../../store/actions/isSongPlaying';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -125,7 +124,4 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   storeIsSongPlaying: value => dispatch(storeIsSongPlaying(value)),
 });
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(MiniBottomPlayer);
+export default connect(mapStateToProps, mapDispatchToProps)(MiniBottomPlayer);

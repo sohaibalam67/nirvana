@@ -23,6 +23,22 @@ export default class SongListItem extends Component {
       this.props.song.cover != null
         ? {uri: this.props.song.cover, cache: 'only-if-cached'}
         : placeholder;
+    let songName;
+
+    if (
+      this.props.song.title &&
+      typeof this.props.song.title === 'string' &&
+      this.props.song.title.trim() !== ''
+    ) {
+      songName = this.props.song.title;
+    } else {
+      // We will use the filename and remove the extension name
+      // So, if the fileName is `Let it be.mp3` then we'll
+      // just use `Let it be` and remove the `.mp3`
+      let splits = this.props.song.fileName.split('.');
+      splits.pop(); // removes the filetype (mp3, aac etc)
+      songName = splits.join('.');
+    }
     return (
       <TouchableHighlight
         style={StyleSheet.container}
@@ -42,9 +58,13 @@ export default class SongListItem extends Component {
                 style={styles.songName}
                 ellipsizeMode="tail"
                 numberOfLines={1}>
-                {this.props.song.title}
+                {songName}
               </Text>
-              <Text style={styles.artistName}>{this.props.song.author}</Text>
+              <Text style={styles.artistName}>
+                {this.props.song.author
+                  ? this.props.song.author
+                  : 'Unknown Artist'}
+              </Text>
             </View>
           </View>
         </View>

@@ -6,8 +6,8 @@ import Permissions from 'react-native-permissions';
 import MusicFiles from 'react-native-get-music-files';
 import {StyleSheet, View, FlatList} from 'react-native';
 import {SongListItem} from '../../../components/SongListItem';
-import AsyncStorage from '@react-native-community/async-storage';
 import {MiniBottomPlayer} from '../../../components/MiniBottomPlayer';
+import {storeSongs} from '../../../store/actions/songs';
 import {storeCurrentSong} from '../../../store/actions/currentSong';
 import {storeIsSongPlaying} from '../../../store/actions/isSongPlaying';
 
@@ -15,7 +15,6 @@ class LibraryScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataSource: null,
       storagePermission: '',
     };
   }
@@ -43,27 +42,7 @@ class LibraryScreen extends Component {
     <SongListItem onPressItem={this.playSong} song={item} />
   );
 
-  _storeData = async tracks => {
-    try {
-      await AsyncStorage.setItem('tracks', JSON.stringify(tracks));
-    } catch (error) {
-      // Error saving data
-    }
-  };
-
-  _retrieveData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('tracks');
-      if (value !== null) {
-        this.setState({dataSource: JSON.parse(value)});
-      }
-    } catch (error) {
-      // Error retrieving data
-    }
-  };
-
   componentDidMount() {
-    this._retrieveData();
     Permissions.request('storage').then(response => {
       this.setState({
         storagePermission: response,
@@ -78,9 +57,8 @@ class LibraryScreen extends Component {
       cover: true,
       minimumSongDuration: 30000,
     })
-      .then(tracks => {
-        this.setState({dataSource: tracks});
-        this._storeData(tracks);
+      .then(songs => {
+        this.props.storeSongs(songs);
       })
       .catch(error => {
         alert('Something went wrong');
@@ -96,7 +74,7 @@ class LibraryScreen extends Component {
     return (
       <View style={styles.container}>
         <FlatList
-          data={this.state.dataSource}
+          data={this.props.songs}
           keyExtractor={(item, index) => index.toString()}
           renderItem={this._renderItem}
           contentContainerStyle={{paddingBottom: 60}}
@@ -122,10 +100,12 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
+  songs: state.songs.songs,
   current_song: state.current_song.current_song,
   is_song_playing: state.is_song_playing.is_song_playing,
 });
 const mapDispatchToProps = dispatch => ({
+  storeSongs: songs => dispatch(storeSongs(songs)),
   storeCurrentSong: song => dispatch(storeCurrentSong(song)),
   storeIsSongPlaying: value => dispatch(storeIsSongPlaying(value)),
 });

@@ -4,7 +4,7 @@ import Library from './Library/LibraryScreen';
 import Settings from './Settings/SettingsScreen';
 import Playlist from './Playlist/PlaylistScreen';
 import {createAppContainer} from 'react-navigation';
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Favourites from './Favourites/FavouritesScreen';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 
@@ -16,7 +16,7 @@ var TabNavigator = createBottomTabNavigator(
         tabBarLabel: 'Library',
         tabBarIcon: ({tintColor, focused}) => (
           <Icon
-            name={focused ? 'list' : 'list'}
+            name={focused ? 'music-note' : 'music-note'}
             size={focused ? 25 : 20}
             style={{color: tintColor}}
           />
@@ -29,7 +29,7 @@ var TabNavigator = createBottomTabNavigator(
         tabBarLabel: 'Playlist',
         tabBarIcon: ({tintColor, focused}) => (
           <Icon
-            name={focused ? 'layers' : 'layers'}
+            name={focused ? 'playlist-music' : 'playlist-music'}
             size={focused ? 25 : 20}
             style={{color: tintColor}}
           />

@@ -7,7 +7,6 @@ import {
   Image,
   TouchableHighlight,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 const {width, height} = Dimensions.get('screen');
 import {getSongName} from '../../helpers/utils';
 import colors from '../../values/colors';

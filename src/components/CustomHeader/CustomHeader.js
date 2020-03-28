@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from '../../values/colors';
 import fonts from '../../values/fonts';
 
@@ -26,7 +26,7 @@ const CustomHeader = props => {
         onPress={() => {
           props.toggleSongOptionsModal(true);
         }}>
-        <Icon name="more-horizontal" size={30} color={colors.WHITE} />
+        <Icon name="dots-horizontal" size={30} color={colors.WHITE} />
       </TouchableHighlight>
     </View>
   );

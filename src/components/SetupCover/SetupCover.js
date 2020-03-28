@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, Dimensions, Animated} from 'react-native';
 import colors from '../../values/colors';
 import fonts from '../../values/fonts';
-import Icon from 'react-native-vector-icons/Feather';
 import Pulse from './Pulse';
 const {width, height} = Dimensions.get('window');
 

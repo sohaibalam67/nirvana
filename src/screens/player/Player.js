@@ -12,7 +12,7 @@ import fonts from '../../values/fonts';
 import colors from '../../values/colors';
 const {width} = Dimensions.get('screen');
 import Slider from '@react-native-community/slider';
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {CustomHeader} from '../../components/CustomHeader';
 import {storeIsSongPlaying} from '../../store/actions/isSongPlaying';
 import {SongOptionsModal} from '../../components/SongOptionsModal';
@@ -75,9 +75,9 @@ class Player extends Component {
 
   render() {
     let playButton = this.props.is_song_playing ? (
-      <Icon name="pause" size={30} color={colors.RED} />
+      <Icon name="pause" size={35} color={colors.RED} />
     ) : (
-      <Icon name="play" size={30} color={colors.RED} />
+      <Icon name="play" size={35} color={colors.RED} />
     );
 
     let imageSource =
@@ -145,7 +145,7 @@ class Player extends Component {
 
           <View style={styles.controls}>
             <TouchableHighlight style={styles.previous}>
-              <Icon name="skip-back" size={25} color={colors.OFF_WHITE} />
+              <Icon name="skip-previous" size={35} color={colors.OFF_WHITE} />
             </TouchableHighlight>
             <TouchableHighlight
               style={styles.play}
@@ -154,7 +154,7 @@ class Player extends Component {
               {playButton}
             </TouchableHighlight>
             <TouchableHighlight style={styles.next}>
-              <Icon name="skip-forward" size={25} color={colors.OFF_WHITE} />
+              <Icon name="skip-next" size={35} color={colors.OFF_WHITE} />
             </TouchableHighlight>
           </View>
         </View>
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   play: {
-    padding: 30,
+    padding: 20,
     borderRadius: 100,
     backgroundColor: colors.OFF_WHITE,
     alignItems: 'center',

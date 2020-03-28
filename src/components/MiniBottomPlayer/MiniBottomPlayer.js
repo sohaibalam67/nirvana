@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import colors from '../../values/colors';
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {storeIsSongPlaying} from '../../store/actions/isSongPlaying';
 import {getSongName} from '../../helpers/utils';
 

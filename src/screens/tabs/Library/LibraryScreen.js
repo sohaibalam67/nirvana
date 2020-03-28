@@ -29,6 +29,7 @@ class LibraryScreen extends Component {
       album: song.album,
       duration: song.duration,
       cover: song.cover,
+      fileName: song.fileName,
       path: song.path,
     });
     this.props.storeIsSongPlaying(true);
@@ -68,14 +69,12 @@ class LibraryScreen extends Component {
   render() {
     let showMiniPlayer = global.sound ? (
       <MiniBottomPlayer navigation={this.props.navigation} />
-    ) : (
-      <View />
-    );
+    ) : null;
     return (
       <View style={styles.container}>
         <FlatList
           data={this.props.songs}
-          keyExtractor={(item, index) => index.toString()}
+          keyExtractor={(item, index) => item.path}
           renderItem={this._renderItem}
           contentContainerStyle={{paddingBottom: 60}}
         />

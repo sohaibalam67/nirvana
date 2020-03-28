@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 const {width, height} = Dimensions.get('screen');
+import {getSongName} from '../../helpers/utils';
 import colors from '../../values/colors';
 import fonts from '../../values/fonts';
 let placeholder = require('../../assets/images/placeholder.png');
@@ -32,12 +33,7 @@ export default class SongListItem extends Component {
     ) {
       songName = this.props.song.title;
     } else {
-      // We will use the filename and remove the extension name
-      // So, if the fileName is `Let it be.mp3` then we'll
-      // just use `Let it be` and remove the `.mp3`
-      let splits = this.props.song.fileName.split('.');
-      splits.pop(); // removes the filetype (mp3, aac etc)
-      songName = splits.join('.');
+      songName = getSongName(this.props.song.fileName);
     }
     return (
       <TouchableHighlight

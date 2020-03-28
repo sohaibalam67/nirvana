@@ -7,6 +7,7 @@ const INITIAL_STATE = {
     album: null,
     duration: null,
     cover: null,
+    fileName: null,
     path: null,
   },
 };
@@ -20,6 +21,7 @@ const CurrentSongReducer = (state = INITIAL_STATE, action) => {
         album: action.current_song.album,
         duration: action.current_song.duration,
         cover: action.current_song.cover,
+        fileName: action.current_song.fileName,
         path: action.current_song.path,
       };
       return {

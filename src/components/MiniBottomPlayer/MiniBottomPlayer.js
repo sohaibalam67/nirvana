@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 import colors from '../../values/colors';
 import Icon from 'react-native-vector-icons/Feather';
 import {storeIsSongPlaying} from '../../store/actions/isSongPlaying';
+import {getSongName} from '../../helpers/utils';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -40,13 +41,17 @@ class MiniBottomPlayer extends Component {
                 style={styles.songName}
                 ellipsizeMode="tail"
                 numberOfLines={1}>
-                {this.props.current_song.title}
+                {this.props.current_song.title
+                  ? this.props.current_song.title
+                  : getSongName(this.props.current_song.fileName)}
               </Text>
               <Text
                 style={styles.artistName}
                 ellipsizeMode="tail"
                 numberOfLines={1}>
-                {this.props.current_song.author}
+                {this.props.current_song.author
+                  ? this.props.current_song.author
+                  : 'Unknown Artist'}
               </Text>
             </View>
             <View style={styles.buttonSet}>

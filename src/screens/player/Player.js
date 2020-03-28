@@ -16,6 +16,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import {CustomHeader} from '../../components/CustomHeader';
 import {storeIsSongPlaying} from '../../store/actions/isSongPlaying';
 import {SongOptionsModal} from '../../components/SongOptionsModal';
+import {getSongName} from '../../helpers/utils';
 
 let placeholder = require('../../assets/images/placeholder.png');
 
@@ -99,18 +100,22 @@ class Player extends Component {
             />
           </View>
           <View style={styles.songInfo}>
-            <Text style={styles.songName}>{this.props.current_song.title}</Text>
+            <Text style={styles.songName}>
+              {this.props.current_song.title
+                ? this.props.current_song.title
+                : getSongName(this.props.current_song.fileName)}
+            </Text>
             <View style={{flexDirection: 'row'}}>
               <Text style={styles.albumName}>
                 {this.props.current_song.album
                   ? this.props.current_song.album
-                  : ''}
+                  : 'Unknown Album'}
                 ,{' '}
               </Text>
               <Text style={styles.artistName}>
                 {this.props.current_song.author
                   ? this.props.current_song.author
-                  : ''}
+                  : 'Unknown Artist'}
               </Text>
             </View>
           </View>
